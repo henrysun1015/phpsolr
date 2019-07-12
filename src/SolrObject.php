@@ -5,6 +5,7 @@ use PHPSolr\config\Config;
 
 class SolrObject{
 
+
 	private $base_uri;
 	private $core;
 	private $action = 'select';
@@ -27,5 +28,13 @@ class SolrObject{
 
 	public function exec(){
 		echo 'Send data To solr';
+	}
+
+	private function creat_uri(){
+
+	}
+
+	public function buildParams(){
+
 	}
 }

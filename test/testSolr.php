@@ -9,6 +9,14 @@ require_once "../vendor/autoload.php";
 
 use PHPSolr\SolrObject;
 use PHPSolr\config\Config;
-$config = Config::getInstance()->setConfig(['host'=>1]);
-$obj = new SolrObject($config);
-$obj->exec();
+try{
+	$config = Config::getInstance()->init(['host'=>'127.0.0.1','port'=>8983]);
+	var_dump($config );
+	$obj = new SolrObject($config);
+	$obj->exec();
+}catch (\PHPSolr\component\SolrException $e){
+	var_dump($e->getMessage());
+}catch (\Exception $e){
+	var_dump($e->getMessage());
+}
+
