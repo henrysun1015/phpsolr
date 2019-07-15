@@ -32,6 +32,12 @@ class SolrParams{
 		self::$params['rows'] = $rows;
 	}
 
+	public static function setBatch($params){
+		foreach ($params as $pm=>$val){
+			self::$params[$pm] = $val;
+		}
+	}
+
 	public static function setJsonFacet($json_fact){
 		if(is_array($json_fact)){
 			self::$params['json.facet'] = json_encode($json_fact);
