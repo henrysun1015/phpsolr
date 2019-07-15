@@ -18,11 +18,12 @@ class Config
 	private $auth;
 	private $password;
 	public $base_uri;
+
 	/**
 	 * @Purpose:
-	 * @CreateDate: 2019/7/12 16:50
+	 * @CreateDate: 2019/7/12 18:39
 	 * @param $config
-	 * @throws SolrException
+	 * @return $this
 	 * @Author:shr
 	 */
 	public function init($config){
