@@ -5,26 +5,39 @@
 namespace PHPSolr;
 class SolrParams{
 
-	public $params;
+	public static $params;
+	public static $query_type;
 
-	public function setSort($sort){
-		$this->params['sort'] = $sort;
+	public static function setSort($sort){
+		self::$params['sort'] = $sort;
 	}
 
-	public function setQuery($query){
-		$this->params['q'] = $query;
+	public static function setQuery($query){
+		self::$params['q'] = $query;
 	}
 
-	public function setField($field){
-		$this->params['fl'] = $field;
+	public static function setField($field){
+		self::$params['fl'] = $field;
 	}
 
-	public function setStart($start){
-		$this->params['start'] = $start;
+	public static function setStart($start){
+		self::$params['start'] = $start;
 	}
 
-	public function setRows($rows){
-		$this->params['start'] = $rows;
+	public static function setDefType($defType){
+		self::$params['defType'] = $defType;
+	}
+
+	public static function setRows($rows){
+		self::$params['rows'] = $rows;
+	}
+
+	public static function setJsonFacet($json_fact){
+		if(is_array($json_fact)){
+			self::$params['json.facet'] = json_encode($json_fact);
+		}else{
+			self::$params['json.facet'] = $json_fact;
+		}
 	}
 	/**
 	 * @Purpose:
@@ -32,9 +45,12 @@ class SolrParams{
 	 * @param $stats string|array  ('id') || (['id','add_time'])
 	 * @Author:shr
 	 */
-	public function setStats($stats){
-		$this->params['stats']='true';
-		$this->params['stats.field'] = $stats;
+	public static function setStats($stats){
+		self::$params['stats']='true';
+		self::$params['stats.field'] = $stats;
 	}
+
+	const QUERY_SELECT = 'select';
+	const QUERY_UPDATE = 'update';
 
 }
